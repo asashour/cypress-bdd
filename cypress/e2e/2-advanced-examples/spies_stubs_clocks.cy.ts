@@ -6,7 +6,8 @@ context('Spies, Stubs, and Clock', () => {
     cy.visit('https://example.cypress.io/commands/spies-stubs-clocks')
 
     const obj = {
-      foo () {},
+      foo() {
+      },
     }
 
     const spy = cy.spy(obj, 'foo').as('anyArgs')
@@ -23,8 +24,8 @@ context('Spies, Stubs, and Clock', () => {
       /**
        * Prints the argument passed
        * @param x {any}
-      */
-      foo (x) {
+       */
+      foo(x) {
         console.log('obj.foo called with', x)
       },
     }
@@ -51,8 +52,8 @@ context('Spies, Stubs, and Clock', () => {
        * prints both arguments to the console
        * @param a {string}
        * @param b {string}
-      */
-      foo (a, b) {
+       */
+      foo(a, b) {
         console.log('a', a, 'b', b)
       },
     }
@@ -104,8 +105,8 @@ context('Spies, Stubs, and Clock', () => {
       /**
        * Greets a person
        * @param {string} name
-      */
-      greet (name) {
+       */
+      greet(name?: Object) {
         return `Hello, ${name}!`
       },
     }
@@ -131,8 +132,8 @@ context('Spies, Stubs, and Clock', () => {
        * returns the sum of two arguments
        * @param a {number}
        * @param b {number}
-      */
-      add (a, b) {
+       */
+      add(a, b) {
         return a + b
       },
     }
@@ -197,7 +198,7 @@ context('Spies, Stubs, and Clock', () => {
       Cypress.sinon.match.number, Cypress.sinon.match(3))
 
     // you can alias matchers for shorter test code
-    const { match: M } = Cypress.sinon
+    const {match: M} = Cypress.sinon
 
     cy.get('@add').should('have.been.calledWith', M.number, M(3))
   })
